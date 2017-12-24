@@ -9,7 +9,9 @@ const router = vertex.router()
 router.get('/', function(req, res){
 
 	var data = {
-        text: 'Hello from WeWork!'
+        text: 'Hello from WeWork!',
+        firstName: 'Forrest',
+        lastName: 'Pan'
 
 	}
 	res.render('index', data)
