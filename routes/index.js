@@ -19,9 +19,21 @@ router.get('/', function(req, res){
 
 router.get('/:page', function(req, res){
 	var page = req.params.page
+	var user = req.query.user
+
+	if (user == null){
+		res.json({
+			confirmation: 'fail',
+			message: 'please enter a user query parameter!'
+		})
+		return
+	}
 
     if (page == 'instagram') {
-    	res.render('instagram', null)
+    	var data = {
+    		user: user
+    	}
+    	res.render('instagram', data)
     	return
     }
 
