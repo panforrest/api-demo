@@ -45,10 +45,24 @@ router.get('/:page', function(req, res){
         		return
         	}
             
-            var data = response.body || response.text
-            const feed = data.user.media.nodes
+            const data = response.body || response.text
+            // const feed = data.user.media.nodes
+            let feed = []
+            data.user.media.nodes.forEach((post, i) => {
+                // const p = {
+                // 	image: post['thumbnail_src'],
+                // 	caption: post['caption']
+                // }
+                feed.push({
+                	// image: post['thumbnail_src'],
+                	// caption: post['caption']
+                	image: post.thumbnail_src,
+                	caption: post.caption
+                })
+            })
+
             res.json({
-            	feed:feed
+            	feed: feed
             })
             return
 
