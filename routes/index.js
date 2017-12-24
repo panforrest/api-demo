@@ -46,7 +46,10 @@ router.get('/:page', function(req, res){
         	}
             
             var data = response.body || response.text
-            res.json(data)
+            const feed = data.user.media.nodes
+            res.json({
+            	feed:feed
+            })
             return
 
         })
