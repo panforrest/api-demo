@@ -17,4 +17,18 @@ router.get('/', function(req, res){
 	res.render('index', data)
 })
 
+router.get('/:page', function(req, res){
+	var page = req.params.page
+
+    if (page == 'instagram') {
+    	res.render('instagram', null)
+    	return
+    }
+
+	res.json({
+		confirmation: 'success',
+		page: page
+	})
+})
+
 module.exports = router
