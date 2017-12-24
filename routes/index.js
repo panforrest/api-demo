@@ -61,9 +61,12 @@ router.get('/:page', function(req, res){
                 })
             })
 
-            res.json({
-            	feed: feed
-            })
+            // res.json({
+            // 	feed: feed
+            // })
+
+            res.render('instagram', {feed: feed})
+
             return
 
         })
