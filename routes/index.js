@@ -2,6 +2,7 @@
 const turbo = require('turbo360')({site_id: process.env.TURBO_APP_ID})
 const vertex = require('vertex360')({site_id: process.env.TURBO_APP_ID})
 const router = vertex.router()
+const superagent = require('superagent')
 
 /*  This is the home route. It renders the index.mustache page from the views directory.
 	Data is rendered using the Mustache templating engine. For more
@@ -30,10 +31,30 @@ router.get('/:page', function(req, res){
 	}
 
     if (page == 'instagram') {
-    	var data = {
-    		user: user
-    	}
-    	res.render('instagram', data)
+        //make API call to: https://www.instagram.com/14streety/?__a=1 
+
+        superagent.get('https://www.instagram.com/14streety/?__a=1')
+        .query(null)
+        .set('Accept', 'application/json')
+        .end((err, response) => {
+        	if (err){
+        		res.json({
+        			confirmation: 'fail',
+        			message: err.message
+        		})
+        		return
+        	}
+            
+            var data = response.body || response.text
+            res.json(data)
+            return
+
+        })
+
+    	// var data = {
+    	// 	user: user
+    	// }
+    	// res.render('instagram', data)
     	return
     }
 

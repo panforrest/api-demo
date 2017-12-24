@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "nodemon": "latest",
+    "superagent": "^3.8.2",
     "turbo360": "latest",
     "vertex360": "latest"
   },
