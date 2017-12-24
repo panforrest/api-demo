@@ -33,7 +33,7 @@ router.get('/:page', function(req, res){
     if (page == 'instagram') {
         //make API call to: https://www.instagram.com/14streety/?__a=1 
 
-        superagent.get('https://www.instagram.com/14streety/?__a=1')
+        superagent.get('https://www.instagram.com/'+user+'/?__a=1')
         .query(null)
         .set('Accept', 'application/json')
         .end((err, response) => {
