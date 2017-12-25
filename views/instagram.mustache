@@ -2,16 +2,21 @@
 <html dir="ltr" lang="en-US">
 {{>head}}
 
-<body class="container">
+<body class="container" style="background:#f9f9f9">
+      <h1>Instagram Page</h1>
+      <hr />
 	<div class="row">
 
-		<div class="col-md-6 col-md-offset-3" style="text-align:center;margin-bottom:48px">
-			<h1>Instagram Page</h1>
-			<hr />
+		<!-- <div class="col-md-6 col-md-offset-3" style="text-align:center;margin-bottom:48px"> -->
+
 			<!-- User: {{user}} -->
       {{#feed}}
-      <div>
-        <img style="width:260px" src="{{image}}" />
+      <div class="col-md-3">
+        <div style="padding:12px">
+          <img style="background:#fff;width:260px;padding:12px;border:1px solid #ddd" src="{{image}}" /><br />
+          <small>{{caption}}</small>
+        </div>
+        
 
       </div>
 
