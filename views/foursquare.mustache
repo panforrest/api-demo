@@ -7,11 +7,22 @@
       <hr />
 	<div class="row">
     <div class="col-md-8 col-md-offset-2">
-      <table>
+      <table class="table table-stripped" style="background:#f9f9f9;border:1px solid #ddd;padding:16px">
         <tbody>
+          <thead>
+            <tr>
+              <td><strong>Name</strong></td>
+              <td><strong>Phone</strong></td>
+              <td><strong>Website</strong></td>
+
+            </tr>
+
+          </thead>
           {{#results}}
             <tr>
               <td>{{name}}</td>
+              <td>{{contact.formattedPhone}}</td>
+              <td><a style="color:red" target="_blank" href="{{url}}">{{url}}</a></td>
 
             </tr>
 
