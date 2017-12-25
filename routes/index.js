@@ -65,9 +65,15 @@ router.get('/:page', function(req, res){
             }
 
             const data = response.body
-            const results = data.response.venues
+            // const results = data.response.venues
 
-            
+            let results = []
+            data.response.venues.forEach((venue, i) => {
+                results.push({
+                    naem: venue.name,
+                    url: venue.url
+                })
+            })
 
             res.json({
                 results: results
