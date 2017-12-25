@@ -25,14 +25,28 @@ router.get('/:page', function(req, res){
 
 
     if (page == 'foursquare'){
-        //https://api.foursquare.com/v2/venues/search?v=20140806&near=new+york&query=pizza&client_id=VZZ1EUDOT0JYITGFDKVVMCLYHB3NURAYK3OHB5SK5N453NFD&client_secret=UAA15MIFIWVKZQRH22KPSYVWREIF2EMMH0GQ0ZKIQZC322NZ
+        if (req.query.near == null) {
+            res.json({
+                confirmation: 'fail',
+                message: 'Missing near parameter'
+            })
+            return
+        }
+
+        if (req.query.query == null) {
+            res.json({
+                confirmation: 'fail',
+                message: 'Missing query parameter'
+            })
+            return
+        }
    
         const endpoint = 'https://api.foursquare.com/v2/venues/search'
 
         const query = {
             v: '20140806',
-            near: 'new+york',
-            query: 'pizza',
+            near: req.query.near,
+            query: req.query.query,
             client_id: 'VZZ1EUDOT0JYITGFDKVVMCLYHB3NURAYK3OHB5SK5N453NFD',
             client_secret: 'UAA15MIFIWVKZQRH22KPSYVWREIF2EMMH0GQ0ZKIQZC322NZ'
         }
@@ -50,7 +64,7 @@ router.get('/:page', function(req, res){
                 return
             }
 
-            const data = response.body || response.text
+            const data = response.body
             res.json(data)
         })
 
