@@ -25,7 +25,36 @@ router.get('/:page', function(req, res){
 
 
     if (page == 'foursquare'){
-        res.render('foursquare', null)
+        //https://api.foursquare.com/v2/venues/search?v=20140806&near=new+york&query=pizza&client_id=VZZ1EUDOT0JYITGFDKVVMCLYHB3NURAYK3OHB5SK5N453NFD&client_secret=UAA15MIFIWVKZQRH22KPSYVWREIF2EMMH0GQ0ZKIQZC322NZ
+   
+        const endpoint = 'https://api.foursquare.com/v2/venues/search'
+
+        const query = {
+            v: '20140806',
+            near: 'new+york',
+            query: 'pizza',
+            client_id: 'VZZ1EUDOT0JYITGFDKVVMCLYHB3NURAYK3OHB5SK5N453NFD',
+            client_secret: 'UAA15MIFIWVKZQRH22KPSYVWREIF2EMMH0GQ0ZKIQZC322NZ'
+        }
+
+        superagent.get(endpoint)
+        .query(query)
+        .set('Accept', 'application/json')
+        .end((err, response) => {
+            if (err) {
+                res.json({
+                    confirmation: 'fail',
+                    message: err.message
+                })
+
+                return
+            }
+
+            const data = response.body || response.text
+            res.json(data)
+        })
+
+        // res.render('foursquare', null)
         return
     }
 
@@ -38,7 +67,7 @@ router.get('/:page', function(req, res){
             })
             return
         }
-        
+
         //make API call to: https://www.instagram.com/14streety/?__a=1 
 
         superagent.get('https://www.instagram.com/'+user+'/?__a=1')
