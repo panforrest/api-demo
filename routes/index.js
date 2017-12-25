@@ -22,7 +22,7 @@ router.get('/:page', function(req, res){
 	var page = req.params.page
 	var user = req.query.user
 
-
+    //foursquare query string is "http://localhost:3000/foursquare?near=chicago&query=bagels"
 
     if (page == 'foursquare'){
         if (req.query.near == null) {
@@ -65,7 +65,13 @@ router.get('/:page', function(req, res){
             }
 
             const data = response.body
-            res.json(data)
+            const results = data.response.venues
+
+            
+
+            res.json({
+                results: results
+            })
         })
 
         // res.render('foursquare', null)
