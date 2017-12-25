@@ -22,15 +22,23 @@ router.get('/:page', function(req, res){
 	var page = req.params.page
 	var user = req.query.user
 
-	if (user == null){
-		res.json({
-			confirmation: 'fail',
-			message: 'please enter a user query parameter!'
-		})
-		return
-	}
+
+
+    if (page == 'foursquare'){
+        res.render('foursquare', null)
+        return
+    }
 
     if (page == 'instagram') {
+
+        if (user == null){
+            res.json({
+                confirmation: 'fail',
+                message: 'please enter a user query parameter!'
+            })
+            return
+        }
+        
         //make API call to: https://www.instagram.com/14streety/?__a=1 
 
         superagent.get('https://www.instagram.com/'+user+'/?__a=1')
