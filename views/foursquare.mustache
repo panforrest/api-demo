@@ -6,24 +6,24 @@
       <h1>Foursquare Page</h1>
       <hr />
 	<div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <table>
+        <tbody>
+          {{#results}}
+            <tr>
+              <td>{{name}}</td>
 
-		<!-- <div class="col-md-6 col-md-offset-3" style="text-align:center;margin-bottom:48px"> -->
+            </tr>
 
-			<!-- User: {{user}} -->
-      {{#feed}}
-      <div class="col-md-3">
-        <div style="padding:12px">
-          <img style="background:#fff;width:260px;padding:12px;border:1px solid #ddd" src="{{image}}" /><br />
-          <small>{{caption}}</small>
-        </div>
-        
+          {{/results}}
 
-      </div>
+        </tbody>
 
-      {{/feed}}
+      </table>
 
-		</div>
-	</div>
+    </div>
+
+  </div>
 
 
   <!-- Turbo library imports: jQuery, Turbo CDN, sample app.js.

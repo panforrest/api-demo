@@ -79,7 +79,7 @@ router.get('/:page', function(req, res){
             // res.json({
             //     results: results
             // })
-            res.render('foursquare', data)
+            res.render('foursquare', {results: results})
         })
 
         // res.render('foursquare', null)
