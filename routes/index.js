@@ -70,14 +70,16 @@ router.get('/:page', function(req, res){
             let results = []
             data.response.venues.forEach((venue, i) => {
                 results.push({
-                    naem: venue.name,
+                    name: venue.name,
+                    contact: venue.contact,
                     url: venue.url
                 })
             })
 
-            res.json({
-                results: results
-            })
+            // res.json({
+            //     results: results
+            // })
+            res.render('foursquare', data)
         })
 
         // res.render('foursquare', null)
